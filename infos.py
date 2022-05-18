@@ -86,17 +86,10 @@ def createFinishUploading(filename,filesize,split_size,current,count,findex):
     msg+= '📂Tamaño Partes: ' + str(sizeof_fmt(split_size))+'\n'
     msg+= '📤Partes Subidas: ' + str(current) + '/' + str(count) +'\n\n'
     msg+= '🗑Borrar Archivo: ' + '/del_'+str(findex)
+    msg+= '\n'
+    msg+= "<a href='"+f'nexus.uclv.edu.cu/repository/github.com/'+userdata['githubuser']+'/'+userdata['path_upload']+'-upload/archive/refs/heads/main.zip'+"'>🔗"+'Descargar Todo'+'🔗</a>\n'
     return msg
 
-def createFileMsg(filename,files):
-    import urllib
-    if len(files)>0:
-        msg= '<b>🖇Enlaces🖇</b>\n'
-        for f in files:
-            url = urllib.parse.unquote(f['directurl'],encoding='utf-8', errors='replace')
-            #msg+= '<a href="'+f['url']+'">🔗' + f['name'] + '🔗</a>'
-            msg+= "<a href='"+url+"'>🔗"+f['name']+'🔗</a>\n'
-        return msg
     return ''
 
 def createFilesMsg(evfiles):
