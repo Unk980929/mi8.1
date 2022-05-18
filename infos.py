@@ -85,28 +85,8 @@ def createFinishUploading(filename,filesize,split_size,current,count,findex):
     msg+= '🗂Tamaño Total: ' + str(sizeof_fmt(filesize))+'\n'
     msg+= '📂Tamaño Partes: ' + str(sizeof_fmt(split_size))+'\n'
     msg+= '📤Partes Subidas: ' + str(current) + '/' + str(count) +'\n\n'
-    msg+= '🗑Borrar Archivo: ' + '/del_'+str(findex)
     msg+= '\n'
     msg+= "<a href='"+f'nexus.uclv.edu.cu/repository/github.com/'+userdata['githubuser']+'/'+userdata['path_upload']+'-upload/archive/refs/heads/main.zip'+"'>🔗"+'Descargar Todo'+'🔗</a>\n'
-    return msg
-
-    return ''
-
-def createFilesMsg(evfiles):
-    msg = '📑Archivos ('+str(len(evfiles))+')📑\n\n'
-    i = 0
-    for f in evfiles:
-            try:
-                fextarray = str(f['files'][0]['name']).split('.')
-                fext = ''
-                if len(fextarray)>=3:
-                    fext = '.'+fextarray[-2]
-                else:
-                    fext = '.'+fextarray[-1]
-                fname = f['name'] + fext
-                msg+= '/txt_'+ str(i) + ' /del_'+ str(i) + '\n' + fname +'\n\n'
-                i+=1
-            except:pass
     return msg
 def createStat(username,userdata,isadmin,jdb=None):
     from pyobigram.utils import sizeof_fmt
